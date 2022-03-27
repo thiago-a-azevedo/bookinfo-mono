@@ -4,7 +4,7 @@ steps:
   args:
   - '-Dsonar.host.url=https://sonarcloud.io'
   - '-Dsonar.projectKey=$$SONARQ_PROJECTKEY'
-  - '-Dsonar.organization=$$SONARQ_ORG'
+  - '-Dsonar.organization=$_SONARQ_ORG'
   - '-Dsonar.sources=src/productpage'
   env:
   - 'SONAR_TOKEN=$_SONARQ_TOKEN'
