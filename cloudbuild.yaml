@@ -3,3 +3,5 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$TAG_NAME', '.']
   dir: 'src/productpage'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$TAG_NAME']
