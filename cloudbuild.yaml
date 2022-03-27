@@ -1,3 +1,4 @@
+#cloud build
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/myproject/myimage:$TAG_NAME', '.']
