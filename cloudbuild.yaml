@@ -18,7 +18,5 @@ availableSecrets:
      env: 'SONAR_PROJECTKEY'
    - versionName: projects/$PROJECT_ID/secrets/SONAR_ORGKEY/versions/latest
      env: 'SONAR_ORGKEY'
-   - versionName: projects/$PROJECT_ID/secrets/SONAR_ORG/versions/latest
-     env: 'SONAR_ORG'
    - versionName: projects/$PROJECT_ID/secrets/SONAR_TOKEN/versions/latest
      env: 'SONAR_TOKEN'
