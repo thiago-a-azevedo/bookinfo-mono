@@ -6,7 +6,7 @@ steps:
   - '-Dsonar.projectKey=$$SONAR_PROJECTKEY'
   - '-Dsonar.organization=$$SONAR_ORGKEY'
   - '-Dsonar.sources=src/productpage'
-  secretEnv: [SONAR_PROJECTKEY,SONAR_ORGKEY,SONAR_TOKEN]
+  secretEnv: ['SONAR_PROJECTKEY','SONAR_ORGKEY','SONAR_TOKEN']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$SHORT_SHA', '.']
   dir: 'src/productpage'
