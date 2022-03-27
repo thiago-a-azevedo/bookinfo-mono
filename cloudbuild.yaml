@@ -1,7 +1,24 @@
 #cloud build
 steps:
+- name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
+  args:
+  - '-Dsonar.host.url=https://sonarcloud.io'
+  - '-Dsonar.projectKey=$$SONAR_PROJECTKEY'
+  - '-Dsonar.organization=$$SONAR_ORG'
+  - '-Dsonar.sources=src/productpage'
+  env:
+  - 'SONAR_TOKEN=$$SONAR_TOKEN'
+  secretEnv: ['SONAR_PROJECTKEY','SONAR_ORG',SONAR_TOKEN]
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$SHORT_SHA', '.']
   dir: 'src/productpage'
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$SHORT_SHA']
+availableSecrets:
+ secretManager:
+   - versionName: projects/$PROJECT_ID/secrets/SONAR_PROJECTKEY/versions/1
+     env: 'SONAR_PROJECTKEY'
+   - versionName: projects/$PROJECT_ID/secrets/SONAR_ORG/versions/1
+     env: 'SONAR_ORG'
+   - versionName: projects/$PROJECT_ID/secrets/SONAR_TOKEN/versions/1
+     env: 'SONAR_TOKEN'
