@@ -7,8 +7,6 @@ steps:
   - '-Dsonar.organization=$$SONARQ_ORG'
   - '-Dsonar.sources=src/productpage'
  secretEnv: ['SONAR_TOKEN']
- # env:
- # - 'SONAR_TOKEN=$_SONARQ_TOKEN'
   secretEnv: ['SONARQ_PROJECTKEY','SONARQ_ORG',SONARQ_TOKEN]
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/bookinfo/examples-bookinfo-productpage:$SHORT_SHA', '.']
